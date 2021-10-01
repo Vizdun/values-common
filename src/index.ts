@@ -1,5 +1,5 @@
 import "./css/style.css"
-import { general } from "./data"
+import { customCss, general } from "./data"
 import { indexHtml } from "./pages/index"
 import { instructions } from "./pages/instructions"
 import { quiz } from "./quiz"
@@ -17,7 +17,7 @@ document.title = general.title
 export function changePage(dest: number) {
 	switch (dest) {
 		case Page.index:
-			document.body.innerHTML = indexHtml
+			document.body.innerHTML = indexHtml + customCss
 			document
 				.getElementById("instructionButton")
 				.addEventListener("click", () => {
@@ -25,7 +25,7 @@ export function changePage(dest: number) {
 				})
 			break
 		case Page.instructions:
-			document.body.innerHTML = instructions
+			document.body.innerHTML = instructions + customCss
 			document.getElementById("quizButton").addEventListener("click", () => {
 				changePage(Page.quiz)
 			})

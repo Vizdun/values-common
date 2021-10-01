@@ -1,4 +1,4 @@
-import { axes, buttons, maxEffects, questions } from "./data"
+import { axes, buttons, customCss, maxEffects, questions } from "./data"
 import { quizHtml } from "./pages/quiz"
 
 var questionIndex = 0
@@ -14,7 +14,7 @@ function initQuestion() {
 		questions.length
 	}`
 
-	questionText.innerText = questions[questionIndex].text
+	questionText.innerText = questions[questionIndex].question
 }
 
 function prevQuestion() {
@@ -57,7 +57,7 @@ function showResults() {
 }
 
 export function quiz() {
-	document.body.innerHTML = quizHtml
+	document.body.innerHTML = quizHtml + customCss
 
 	let buttonElements = document.getElementsByClassName("button")
 

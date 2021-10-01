@@ -29,7 +29,7 @@ export interface Button {
 }
 
 export interface Question {
-	text: string
+	question: string
 	effect: {
 		[index: string]: number
 	}
@@ -47,10 +47,18 @@ function getJson(name: string) {
 	return JSON.parse(request.responseText)
 }
 
+function getCss(name: string) {
+	var request = new XMLHttpRequest()
+	request.open("GET", parentLoc + "/" + name + ".css", false)
+	request.send(null)
+	return request.responseText
+}
+
 export const axes: Axis[] = getJson("axes")
 export const buttons: Button[] = getJson("buttons")
 export const questions: Question[] = getJson("questions")
 export const general: General = getJson("general")
+export const customCss = `<style>${getCss("style")}</style>`
 
 var maxVals: {
 	[index: string]: number
