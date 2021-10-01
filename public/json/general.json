@@ -1,5 +1,5 @@
 {
-	"title": "8values",
+	"title": "values-common",
 	"github": "https://github.com/Vizdun/values-common",
 	"description": "8values is, in essence, a political quiz that attempts to assign percentages for eight different political values. You will be presented by a statement, and then you will answer with your opinion on the statement, from <b>Strongly Agree</b> to <b>Strongly Disagree</b>, with each answer slightly affecting your scores. At the end of the quiz, your answers will be compared to the maximum possible for each value, thus giving you a percentage. Answer honestly!",
 	"valQuestion": "What are the eight values?",
