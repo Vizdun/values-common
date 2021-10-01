@@ -67,8 +67,14 @@ function isFile(name: string) {
 }
 
 export function fallbackImage(axis: Axis, right: boolean) {
-	return axis.right.icon
+	return right
 		? axis.right.icon
+			? axis.right.icon
+			: isFile(`value_images/${axis.id}_${right ? 1 : 0}.svg`)
+			? `value_images/${axis.id}_${right ? 1 : 0}.svg`
+			: `value_images/${axis.id}_${right ? 1 : 0}.png`
+		: axis.left.icon
+		? axis.left.icon
 		: isFile(`value_images/${axis.id}_${right ? 1 : 0}.svg`)
 		? `value_images/${axis.id}_${right ? 1 : 0}.svg`
 		: `value_images/${axis.id}_${right ? 1 : 0}.png`
