@@ -86,7 +86,7 @@ div.center {
 	border-radius: 8pt;
 	padding: 6pt;
 	color: white;
-	width: 50%;
+	width: calc(100%-2rem);
 	min-width: 488pt;
 	text-align: center;
 	text-decoration: none;
@@ -100,6 +100,7 @@ div.center {
 .column {
 	display: block;
 	width: 22%;
+	max-width: 11rem;
 	padding: 6pt;
 }
 .quadcolumn {
