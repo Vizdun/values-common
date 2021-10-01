@@ -1,4 +1,4 @@
-import { axes, general } from "../data"
+import { axes, fallbackImage, general } from "../data"
 
 // TODO: ideology stuff
 
@@ -35,9 +35,10 @@ export function resultsHtml() {
 
 		resultsAxisHtml += `<h2>${axis.name} Axis: ${
 			matchings[i]
-		}<span class="weight-300" id="economic-label"></span></h2><div class="axis"><img src="${
-			axis.left.icon ? axis.left.icon : `value_images/${axis.id}_0.svg`
-		}" height="128pt" /><div style="background-color:${
+		}<span class="weight-300" id="economic-label"></span></h2><div class="axis"><img src="${fallbackImage(
+			axis,
+			false
+		)}" height="128pt" /><div style="background-color:${
 			axis.left.color
 		};border-right-style:solid;text-align:left;width:${
 			resultEffects[i]
@@ -51,9 +52,10 @@ export function resultsHtml() {
 			100 - resultEffects[i] > 30
 				? (100 - resultEffects[i]).toFixed(1) + "%"
 				: ""
-		}</div></div><img src="${
-			axis.right.icon ? axis.right.icon : `value_images/${axis.id}_1.svg`
-		}" height="128pt" /></div>`
+		}</div></div><img src="${fallbackImage(
+			axis,
+			true
+		)}" height="128pt" /></div>`
 	}
 
 	return `<h1>${general.title}</h1>

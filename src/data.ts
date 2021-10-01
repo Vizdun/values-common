@@ -54,6 +54,26 @@ function getCss(name: string) {
 	return request.responseText
 }
 
+function isFile(name: string) {
+	var request = new XMLHttpRequest()
+	request.open("HEAD", parentLoc + "/" + name, false)
+	request.send(null)
+	switch (request.status) {
+		case 200:
+			return true
+		default:
+			return false
+	}
+}
+
+export function fallbackImage(axis: Axis, right: boolean) {
+	return axis.right.icon
+		? axis.right.icon
+		: isFile(`value_images/${axis.id}_${right ? 1 : 0}.svg`)
+		? `value_images/${axis.id}_${right ? 1 : 0}.svg`
+		: `value_images/${axis.id}_${right ? 1 : 0}.png`
+}
+
 export const axes: Axis[] = getJson("axes")
 export const buttons: Button[] = getJson("buttons")
 export const questions: Question[] = getJson("questions")
