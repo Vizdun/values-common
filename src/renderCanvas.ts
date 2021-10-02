@@ -14,6 +14,7 @@ export function renderCanvas(
 	img = new Image(200, 200)
 
 	ctx.fillStyle = "#222222"
+
 	ctx.font =
 		"700 " +
 		4000 / ctx.measureText(general.title).width +
@@ -21,8 +22,18 @@ export function renderCanvas(
 		general.mainFont
 	ctx.textAlign = "left"
 	ctx.fillText(general.title, 20, 90)
+
 	ctx.font = "50px " + general.mainFont
 	ctx.fillText(ideology.name, 20, 140)
+
+	ctx.textAlign = "right"
+	ctx.font =
+		"300 " +
+		9000 / ctx.measureText(general.title).width +
+		"px " +
+		general.mainFont
+	ctx.fillText(general.link, 780, 60)
+	ctx.fillText(general.version, 780, 90)
 
 	axes.forEach((axis, index) => {
 		const height = 120 * index
@@ -65,10 +76,7 @@ export function renderCanvas(
 				bitHeight
 			)
 		}
-
 		ctx.font = "300 30px " + general.mainFont
-		ctx.fillText(general.link, 780, 60)
-		ctx.fillText(general.version, 780, 90)
 		ctx.textAlign = "center"
 		ctx.fillText(axis.name + " Axis: " + matchings[index], 400, biTHeight)
 	})
