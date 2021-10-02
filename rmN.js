@@ -5,5 +5,5 @@ fs.writeFileSync(
 	fs
 		.readFileSync("public/index.html")
 		.toString()
-		.replace(/\\n\s*/g, "")
+		.replace(/\\n\s*/g, "\\n")
 )
