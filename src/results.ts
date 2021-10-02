@@ -29,7 +29,7 @@ function matchIdeology(stats: { [index: string]: number }) {
 				]
 			})
 			.sort((a, b) => {
-				return a[1] - b[1]
+				return b[1] - a[1]
 			})[0][0]
 	]
 }
