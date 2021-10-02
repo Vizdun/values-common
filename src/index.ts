@@ -32,6 +32,9 @@ export function changePage(dest: number) {
 			document.getElementById("backButton").addEventListener("click", () => {
 				changePage(Page.index)
 			})
+			document.getElementById("shuffleButton").addEventListener("click", () => {
+				quiz(true)
+			})
 			break
 		case Page.quiz:
 			quiz()

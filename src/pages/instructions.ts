@@ -9,6 +9,8 @@ export const instructions = `<h1>${general.title}</h1>
 </p>
 <button class="button" id="quizButton">Got it!</button>
 <br />
+<button class="button" id="shuffleButton">Got it! (Shuffled)</button>
+<br />
 <button class="button disagree" id="backButton">
 	Wait, nevermind!
 </button>
