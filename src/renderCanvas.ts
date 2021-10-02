@@ -29,7 +29,7 @@ export function renderCanvas(
 	ctx.textAlign = "right"
 	ctx.font =
 		"300 " +
-		9000 / ctx.measureText(general.title).width +
+		12000 / ctx.measureText(general.link).width +
 		"px " +
 		general.mainFont
 	ctx.fillText(general.link, 780, 60)
