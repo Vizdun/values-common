@@ -1,7 +1,5 @@
 import { axes, fallbackImage, general, ideologies } from "../data"
 
-// TODO: ideology stuff
-
 function matchIdeology(stats: { [index: string]: number }) {
 	return ideologies[
 		ideologies
@@ -12,10 +10,12 @@ function matchIdeology(stats: { [index: string]: number }) {
 					difs[stat] = Math.abs(item.stats[stat] - stats[stat]) * 0.01
 				}
 
+				console.log(difs, item.name)
+
 				return [
 					index,
 					Object.values(difs).reduce((prev, cur) => {
-						return prev * cur
+						return prev + cur
 					}),
 				]
 			})
@@ -58,6 +58,8 @@ export function resultsHtml() {
 	for (let i = 0; i < axes.length; i++) {
 		const axis = axes[i]
 
+		const maxShown = 15
+
 		resultsAxisHtml += `<h2>${axis.name} Axis: ${
 			matchings[i]
 		}<span class="weight-300" id="economic-label"></span></h2><div class="axis"><img src="${fallbackImage(
@@ -68,13 +70,15 @@ export function resultsHtml() {
 		};border-right-style:solid;text-align:left;width:${
 			resultEffects[axis.id]
 		}%" class="bar"><div class="text-wrapper">${
-			resultEffects[axis.id] > 30 ? resultEffects[axis.id].toFixed(1) + "%" : ""
+			resultEffects[axis.id] > maxShown
+				? resultEffects[axis.id].toFixed(1) + "%"
+				: ""
 		}</div></div><div style="background-color:${
 			axis.right.color
 		};border-left-style:solid;text-align:right;width:${
 			100 - resultEffects[axis.id]
 		}%" class="bar"><div class="text-wrapper">${
-			100 - resultEffects[axis.id] > 30
+			100 - resultEffects[axis.id] > maxShown
 				? (100 - resultEffects[axis.id]).toFixed(1) + "%"
 				: ""
 		}</div></div><img src="${fallbackImage(
