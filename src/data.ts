@@ -19,6 +19,9 @@ export interface General {
 	description: string
 	valQuestion: string
 	valDescription: string
+	mainFont: string
+	link: string
+	version: string
 }
 
 export interface Button {

@@ -1,57 +1,11 @@
-import { axes, fallbackImage, general, ideologies } from "../data"
+import { axes, fallbackImage, general, ideologies, Ideology } from "../data"
 
-function matchIdeology(stats: { [index: string]: number }) {
-	return ideologies[
-		ideologies
-			.map((item, index) => {
-				var difs: { [index: string]: number } = {}
-
-				for (const stat in stats) {
-					difs[stat] = Math.abs(item.stats[stat] - stats[stat]) * 0.01
-				}
-
-				return [
-					index,
-					Object.values(difs).reduce((prev, cur) => {
-						return prev + cur
-					}),
-				]
-			})
-			.sort((a, b) => {
-				return a[1] - b[1]
-			})[0][0]
-	].name
-}
-
-export function resultsHtml() {
-	const resultEffects = Object.fromEntries(
-		location.href
-			.split("?")[1]
-			.split(",")
-			.map((item, index) => {
-				return [axes[index].id, parseFloat(item)]
-			})
-	)
-
+export function resultsHtml(
+	resultEffects: { [index: string]: number },
+	ideology: Ideology,
+	matchings: string[]
+) {
 	var resultsAxisHtml = ""
-
-	var matchings: string[] = []
-
-	for (let i = 0; i < axes.length; i++) {
-		var sum = 0
-		var tiers: number[] = []
-		for (let i2 = 0; i2 < axes[i].tiers.length; i2++) {
-			sum += 100 / axes[i].tiers.length
-			tiers[i2] = sum
-		}
-
-		for (let i2 = 0; i2 < tiers.length; i2++) {
-			if (resultEffects[axes[i].id] < tiers[i2]) {
-				matchings[i] = axes[i].tiers.reverse()[i2]
-				break
-			}
-		}
-	}
 
 	for (let i = 0; i < axes.length; i++) {
 		const axis = axes[i]
@@ -89,9 +43,9 @@ export function resultsHtml() {
 <hr />
 <h1>Results</h1>
 ${resultsAxisHtml}
-<h2>Closest Match: ${matchIdeology(resultEffects)}</h2>
+<h2>Closest Match: ${ideology.name}</h2>
 <hr />
-<img src="" id="banner" />
+<canvas id="banner" width="800" height="${170 + 120 * axes.length}"></canvas>
 <button class="button" id="backButton">Back</button>
 <br />`
 }
