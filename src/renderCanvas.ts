@@ -8,7 +8,7 @@ export function renderCanvas(
 	var c = document.getElementById("banner") as HTMLCanvasElement
 	var ctx = c.getContext("2d")
 	ctx.fillStyle = "#EEEEEE"
-	ctx.fillRect(0, 0, 800, 650)
+	ctx.fillRect(0, 0, 800, 170 + 120 * axes.length)
 
 	var img: HTMLImageElement
 	img = new Image(200, 200)
