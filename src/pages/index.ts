@@ -7,11 +7,11 @@ var axesIconsHtml = ""
 for (const axis of axes) {
 	axesIconsHtml += `<div class="column">`
 	axesIconsHtml += `<div class="axis_name quadcolumn">${axis.name.toUpperCase()}</div>`
-	axesIconsHtml += `<a href="#anchor"><img src="${fallbackImage(
+	axesIconsHtml += `<a href="#anchor-${axis.id}"><img src="${fallbackImage(
 		axis,
 		false
 	)}" class="quadcolumn"></a>`
-	axesIconsHtml += `<a href="#anchor"><img src="${fallbackImage(
+	axesIconsHtml += `<a href="#anchor-${axis.id}"><img src="${fallbackImage(
 		axis,
 		true
 	)}" class="quadcolumn"></a>`
@@ -20,7 +20,9 @@ for (const axis of axes) {
 
 var axesDescHtml = ""
 for (const axis of axes) {
-	axesDescHtml += `<div class="spacer"><div class="explanation_blurb_left"><p class="value"><b style="color:${
+	axesDescHtml += `<div class="spacer"><div class="explanation_blurb_left" id="anchor-${
+		axis.id
+	}"><p class="value"><b style="color:${
 		axis.left.color
 	};">${axis.left.name.toUpperCase()}</b></p><p class="blurb-text">
 ${axis.left.description}
@@ -47,7 +49,7 @@ ${axesIconsHtml}
 <br><hr>
 <h2>What is ${general.title}?</h2>
 <p>${general.description}</p>
-<h2><a id="anchor">${general.valQuestion}</a></h2>
+<h2><a>${general.valQuestion}</a></h2>
 <p>${general.valDescription}</p>
 <div class="explanation_bg">
 ${axesDescHtml}
