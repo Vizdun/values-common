@@ -1,14 +1,39 @@
-import { axes, fallbackImage, general } from "../data"
+import { axes, fallbackImage, general, ideologies } from "../data"
 
 // TODO: ideology stuff
 
+function matchIdeology(stats: { [index: string]: number }) {
+	return ideologies[
+		ideologies
+			.map((item, index) => {
+				var difs: { [index: string]: number } = {}
+
+				for (const stat in stats) {
+					difs[stat] = Math.abs(item.stats[stat] - stats[stat]) * 0.01
+				}
+
+				return [
+					index,
+					Object.values(difs).reduce((prev, cur) => {
+						return prev * cur
+					}),
+				]
+			})
+			.sort((a, b) => {
+				return a[1] - b[1]
+			})[0][0]
+	].name
+}
+
 export function resultsHtml() {
-	const resultEffects = location.href
-		.split("?")[1]
-		.split(",")
-		.map((item) => {
-			return parseFloat(item)
-		})
+	const resultEffects = Object.fromEntries(
+		location.href
+			.split("?")[1]
+			.split(",")
+			.map((item, index) => {
+				return [axes[index].id, parseFloat(item)]
+			})
+	)
 
 	var resultsAxisHtml = ""
 
@@ -23,7 +48,7 @@ export function resultsHtml() {
 		}
 
 		for (let i2 = 0; i2 < tiers.length; i2++) {
-			if (resultEffects[i] < tiers[i2]) {
+			if (resultEffects[axes[i].id] < tiers[i2]) {
 				matchings[i] = axes[i].tiers.reverse()[i2]
 				break
 			}
@@ -41,16 +66,16 @@ export function resultsHtml() {
 		)}" height="128pt" /><div style="background-color:${
 			axis.left.color
 		};border-right-style:solid;text-align:left;width:${
-			resultEffects[i]
+			resultEffects[axis.id]
 		}%" class="bar"><div class="text-wrapper">${
-			resultEffects[i] > 30 ? resultEffects[i].toFixed(1) + "%" : ""
+			resultEffects[axis.id] > 30 ? resultEffects[axis.id].toFixed(1) + "%" : ""
 		}</div></div><div style="background-color:${
 			axis.right.color
 		};border-left-style:solid;text-align:right;width:${
-			100 - resultEffects[i]
+			100 - resultEffects[axis.id]
 		}%" class="bar"><div class="text-wrapper">${
-			100 - resultEffects[i] > 30
-				? (100 - resultEffects[i]).toFixed(1) + "%"
+			100 - resultEffects[axis.id] > 30
+				? (100 - resultEffects[axis.id]).toFixed(1) + "%"
 				: ""
 		}</div></div><img src="${fallbackImage(
 			axis,
@@ -62,6 +87,7 @@ export function resultsHtml() {
 <hr />
 <h1>Results</h1>
 ${resultsAxisHtml}
+<h2>Closest Match: ${matchIdeology(resultEffects)}</h2>
 <hr />
 <img src="" id="banner" />
 <button class="button" id="backButton">Back</button>
