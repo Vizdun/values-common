@@ -1,4 +1,4 @@
-import { axes, fallbackImage, general, Ideology } from "./data"
+import { axes, canvas, fallbackImage, general, Ideology } from "./data"
 
 export function renderCanvas(
 	resultEffects: { [index: string]: number },
@@ -7,13 +7,13 @@ export function renderCanvas(
 ) {
 	var c = document.getElementById("banner") as HTMLCanvasElement
 	var ctx = c.getContext("2d")
-	ctx.fillStyle = "#EEEEEE"
+	ctx.fillStyle = canvas.bgColor
 	ctx.fillRect(0, 0, 800, 170 + 120 * axes.length)
 
 	var img: HTMLImageElement
 	img = new Image(200, 200)
 
-	ctx.fillStyle = "#222222"
+	ctx.fillStyle = canvas.fgColor
 
 	ctx.font =
 		"700 " +
@@ -48,7 +48,7 @@ export function renderCanvas(
 		img.src = fallbackImage(axis, true)
 		ctx.drawImage(img, 680, iHeight, 100, 100)
 
-		ctx.fillStyle = "#222222"
+		ctx.fillStyle = canvas.fgColor
 		ctx.fillRect(120, bHeight, 560, 80)
 
 		ctx.fillStyle = axis.left.color
@@ -61,7 +61,7 @@ export function renderCanvas(
 			72
 		)
 
-		ctx.fillStyle = "#222222"
+		ctx.fillStyle = canvas.fgColor
 		ctx.font = "50px " + general.mainFont
 
 		ctx.textAlign = "left"

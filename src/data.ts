@@ -46,6 +46,11 @@ export interface Ideology {
 	}
 }
 
+export interface Canvas {
+	fgColor: string
+	bgColor: string
+}
+
 export const parentLoc = window.location.href.slice(
 	0,
 	window.location.href.lastIndexOf("/")
@@ -96,6 +101,7 @@ export const buttons: Button[] = getJson("buttons")
 export const questions: Question[] = getJson("questions")
 export const general: General = getJson("general")
 export const ideologies: Ideology[] = getJson("ideologies")
+export const canvas: Canvas = getJson("canvas")
 export const customCss = `<style>${getCss("style")}</style>`
 
 var maxVals: {
