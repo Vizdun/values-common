@@ -13,6 +13,17 @@ export function renderCanvas(
 	var img: HTMLImageElement
 	img = new Image(200, 200)
 
+	ctx.fillStyle = "#222222"
+	ctx.font =
+		"700 " +
+		4000 / ctx.measureText(general.title).width +
+		"px " +
+		general.mainFont
+	ctx.textAlign = "left"
+	ctx.fillText(general.title, 20, 90)
+	ctx.font = "50px " + general.mainFont
+	ctx.fillText(ideology.name, 20, 140)
+
 	axes.forEach((axis, index) => {
 		const height = 120 * index
 		const iHeight = 170 + height
@@ -40,11 +51,7 @@ export function renderCanvas(
 		)
 
 		ctx.fillStyle = "#222222"
-		ctx.font = "700 80px " + general.mainFont
-		ctx.textAlign = "left"
-		ctx.fillText(general.title, 20, 90)
 		ctx.font = "50px " + general.mainFont
-		ctx.fillText(ideology.name, 20, 140)
 
 		ctx.textAlign = "left"
 		if (resultEffects[axis.id] > 30) {
