@@ -12,13 +12,13 @@ function matchIdeology(stats: { [index: string]: number }) {
 				for (const stat in stats) {
 					difs[stat] =
 						Math.abs(item.stats[stat] - stats[stat]) *
-						axes.find((item) => {
+						(axes.find((item) => {
 							return item.id === stat
 						}).weight
 							? axes.find((item) => {
 									return item.id === stat
 							  }).weight
-							: 1
+							: 1)
 				}
 
 				return [
@@ -29,7 +29,7 @@ function matchIdeology(stats: { [index: string]: number }) {
 				]
 			})
 			.sort((a, b) => {
-				return b[1] - a[1]
+				return a[1] - b[1]
 			})[0][0]
 	]
 }
