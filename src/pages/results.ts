@@ -10,8 +10,6 @@ function matchIdeology(stats: { [index: string]: number }) {
 					difs[stat] = Math.abs(item.stats[stat] - stats[stat]) * 0.01
 				}
 
-				console.log(difs, item.name)
-
 				return [
 					index,
 					Object.values(difs).reduce((prev, cur) => {
