@@ -10,7 +10,15 @@ function matchIdeology(stats: { [index: string]: number }) {
 				var difs: { [index: string]: number } = {}
 
 				for (const stat in stats) {
-					difs[stat] = Math.abs(item.stats[stat] - stats[stat]) * 0.01
+					difs[stat] =
+						Math.abs(item.stats[stat] - stats[stat]) *
+						axes.find((item) => {
+							return item.id === stat
+						}).weight
+							? axes.find((item) => {
+									return item.id === stat
+							  }).weight
+							: 1
 				}
 
 				return [
