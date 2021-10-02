@@ -64,7 +64,11 @@ export function quiz(shuffled: boolean = false) {
 				((maxEffects[key] + maxEffects[key]) * 0.01)
 		}
 
-		location.search = "?" + Object.values(score).join(",")
+		location.search =
+			"?" +
+			Object.values(score)
+				.map((item) => item.toFixed(1))
+				.join(",")
 	}
 
 	document.body.innerHTML = quizHtml + customCss
