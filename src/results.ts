@@ -75,6 +75,7 @@ export function results() {
 	document.getElementById("backButton").addEventListener("click", () => {
 		location.search = ""
 	})
-
-	renderCanvas(resultEffects, ideology, matchingsv)
+	window.onload = () => {
+		renderCanvas(resultEffects, ideology, matchingsv)
+	}
 }
