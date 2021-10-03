@@ -80,6 +80,12 @@ export function quiz(shuffled: boolean = false) {
 			if (questionIndex + 1 < questions.length) {
 				nextQuestion(i)
 			} else {
+				effects[questionIndex] = {}
+				for (const axis of axes) {
+					effects[questionIndex][axis.id] =
+						questions[questionIndex].effect[axis.id] * buttons[i].modifier
+				}
+				questionIndex++
 				showResults()
 			}
 		})
