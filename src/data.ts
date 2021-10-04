@@ -4,6 +4,7 @@ export interface Axis {
 	left: Value
 	right: Value
 	tiers: string[]
+	weights?: number[]
 	weight?: number
 }
 

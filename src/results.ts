@@ -38,16 +38,21 @@ function matchings(resultEffects: { [index: string]: number }) {
 	var matchings: string[] = []
 
 	for (let i = 0; i < axes.length; i++) {
+		var presum = 0
+		for (let i2 = 0; i2 < axes[i].tiers.length; i2++) {
+			presum += axes[i]?.weights?.[i2] ?? 1
+		}
+
 		var sum = 0
 		var tiers: number[] = []
 		for (let i2 = 0; i2 < axes[i].tiers.length; i2++) {
-			sum += 100 / axes[i].tiers.length
+			sum += (100 / presum) * (axes[i]?.weights?.[i2] ?? 1)
 			tiers[i2] = sum
 		}
 
 		for (let i2 = 0; i2 < tiers.length; i2++) {
-			if (resultEffects[axes[i].id] < tiers[i2]) {
-				matchings[i] = axes[i].tiers.reverse()[i2]
+			if (100 - resultEffects[axes[i].id] < tiers[i2]) {
+				matchings[i] = axes[i].tiers[i2]
 				break
 			}
 		}
