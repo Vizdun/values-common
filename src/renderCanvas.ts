@@ -5,10 +5,12 @@ export function renderCanvas(
 	ideology: Ideology,
 	matchings: string[]
 ) {
+	const globalY = -18 - 6
+
 	var c = document.getElementById("banner") as HTMLCanvasElement
 	var ctx = c.getContext("2d")
 	ctx.fillStyle = canvas.bgColor
-	ctx.fillRect(0, 0, 800, 170 + 120 * axes.length)
+	ctx.fillRect(0, 0, 800, 170 + 120 * axes.length + globalY)
 
 	ctx.fillStyle = canvas.fgColor
 
@@ -18,10 +20,10 @@ export function renderCanvas(
 		"px " +
 		general.mainFont
 	ctx.textAlign = "left"
-	ctx.fillText(general.title, 20, 90)
+	ctx.fillText(general.title, 20, 90 + globalY)
 
 	ctx.font = "50px " + general.mainFont
-	ctx.fillText(ideology.name, 20, 140)
+	ctx.fillText(ideology.name, 20, 140 + globalY)
 
 	ctx.textAlign = "right"
 	ctx.font =
@@ -29,11 +31,11 @@ export function renderCanvas(
 		12000 / ctx.measureText(general.link).width +
 		"px " +
 		general.mainFont
-	ctx.fillText(general.link, 780, 60)
-	ctx.fillText(general.version, 780, 90)
+	ctx.fillText(general.link, 780, 60 + globalY + 6)
+	ctx.fillText(general.version, 780, 90 + globalY + 6)
 
 	axes.forEach((axis, index) => {
-		const height = 120 * index
+		const height = 120 * index + globalY
 		const iHeight = 170 + height
 		const bHeight = 180 + height
 		const biHeight = 184 + height

@@ -45,7 +45,9 @@ export function resultsHtml(
 ${resultsAxisHtml}
 <h2>Closest Match: ${ideology.name}</h2>
 <hr />
-<canvas id="banner" width="800" height="${170 + 120 * axes.length}"></canvas>
+<canvas id="banner" width="800" height="${
+		170 + 120 * axes.length + -18 - 6
+	}"></canvas>
 <button class="button" id="backButton">Back</button>
 <br />`
 }
