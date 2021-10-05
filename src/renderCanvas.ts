@@ -35,12 +35,31 @@ export function renderCanvas(
 	ctx.fillText(general.version, 780, 90 + globalY + 6)
 
 	axes.forEach((axis, index) => {
+		const defThickness = 72
+		const defOut = 4
+
 		const height = 120 * index + globalY
 		const iHeight = 170 + height
-		const bHeight = 180 + height
-		const biHeight = 184 + height
-		const bitHeight = 237.5 + height
-		const biTHeight = 175 + height
+		const bHeight =
+			180 +
+			height -
+			((canvas.barThickness ?? defThickness) +
+				(canvas.outlineThickness ?? defOut) * 2 -
+				(defThickness + defOut * 2)) /
+				2
+		const biHeight =
+			184 + height - ((canvas.barThickness ?? defThickness) - defThickness) / 2
+		const bitHeight =
+			237.5 +
+			height +
+			((canvas.barThickness ?? defThickness) - defThickness) / 4
+		const biTHeight =
+			175 +
+			height -
+			((canvas.barThickness ?? defThickness) +
+				(canvas.outlineThickness ?? defOut) * 2 -
+				(defThickness + defOut * 2)) /
+				2
 
 		var img = new Image(200, 200)
 		img.onload = () => {
@@ -55,20 +74,36 @@ export function renderCanvas(
 		img2.src = fallbackImage(axis, true)
 
 		ctx.fillStyle = canvas.fgColor
-		ctx.fillRect(120, bHeight, 560, 80)
+		ctx.fillRect(
+			120,
+			bHeight,
+			560,
+			(canvas.barThickness ?? defThickness) +
+				(canvas.outlineThickness ?? defOut) * 2
+		)
 
 		ctx.fillStyle = axis.left.color
-		ctx.fillRect(120, biHeight, 5.6 * resultEffects[axis.id] - 2, 72)
+		ctx.fillRect(
+			120,
+			biHeight,
+			(560 / 100) * resultEffects[axis.id] -
+				(canvas.outlineThickness ?? defOut) / 2,
+			canvas.barThickness ?? defThickness
+		)
 		ctx.fillStyle = axis.right.color
 		ctx.fillRect(
-			682 - 5.6 * (100 - resultEffects[axis.id]),
+			120 +
+				(560 / 100) * resultEffects[axis.id] +
+				(canvas.outlineThickness ?? defOut) / 2,
 			biHeight,
-			5.6 * (100 - resultEffects[axis.id]) - 2,
-			72
+			(560 / 100) * (100 - resultEffects[axis.id]) -
+				(canvas.outlineThickness ?? defOut) / 2,
+			canvas.barThickness ?? defThickness
 		)
 
 		ctx.fillStyle = canvas.fgColor
-		ctx.font = "50px " + general.mainFont
+		ctx.font =
+			0.625 * (canvas.barThickness ?? defThickness) + "px " + general.mainFont
 
 		ctx.textAlign = "left"
 		if (resultEffects[axis.id] > 30) {

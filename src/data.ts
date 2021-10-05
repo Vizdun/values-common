@@ -50,6 +50,8 @@ export interface Ideology {
 export interface Canvas {
 	fgColor: string
 	bgColor: string
+	barThickness?: number
+	outlineThickness?: number
 }
 
 export const parentLoc = window.location.href.slice(
