@@ -52,6 +52,7 @@ export interface Canvas {
 	bgColor: string
 	barThickness?: number
 	outlineThickness?: number
+	limit?: number
 }
 
 export const parentLoc = window.location.href.slice(

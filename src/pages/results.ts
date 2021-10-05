@@ -1,4 +1,11 @@
-import { axes, fallbackImage, general, ideologies, Ideology } from "../data"
+import {
+	axes,
+	canvas,
+	fallbackImage,
+	general,
+	ideologies,
+	Ideology,
+} from "../data"
 
 export function resultsHtml(
 	resultEffects: { [index: string]: number },
@@ -10,7 +17,7 @@ export function resultsHtml(
 	for (let i = 0; i < axes.length; i++) {
 		const axis = axes[i]
 
-		const maxShown = 15
+		const maxShown = canvas.limit ?? 30
 
 		resultsAxisHtml += `<h2>${axis.name} Axis: ${
 			matchings[i]

@@ -106,11 +106,11 @@ export function renderCanvas(
 			0.625 * (canvas.barThickness ?? defThickness) + "px " + general.mainFont
 
 		ctx.textAlign = "left"
-		if (resultEffects[axis.id] > 30) {
+		if (resultEffects[axis.id] > (canvas.limit ?? 30)) {
 			ctx.fillText(resultEffects[axis.id].toFixed(1) + "%", 130, bitHeight)
 		}
 		ctx.textAlign = "right"
-		if (100 - resultEffects[axis.id] > 30) {
+		if (100 - resultEffects[axis.id] > (canvas.limit ?? 30)) {
 			ctx.fillText(
 				(100 - resultEffects[axis.id]).toFixed(1) + "%",
 				670,
