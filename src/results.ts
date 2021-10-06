@@ -59,8 +59,9 @@ function matchings(resultEffects: { [index: string]: number }) {
 					break
 				}
 			} else {
+				console.log(resultEffects[axes[i].id], tiers[i2])
 				if (resultEffects[axes[i].id] <= tiers[i2] || i2 === tiers.length - 1) {
-					matchings[i] = axes[i].tiers[axes[i].tiers.length - i2]
+					matchings[i] = axes[i].tiers[axes[i].tiers.length - i2 - 1]
 					break
 				}
 			}
