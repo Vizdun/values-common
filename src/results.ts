@@ -52,14 +52,14 @@ function matchings(resultEffects: { [index: string]: number }) {
 		for (let i2 = 0; i2 < tiers.length; i2++) {
 			if (resultEffects[axes[i].id] > 50) {
 				if (
-					100 - resultEffects[axes[i].id] < tiers[i2] ||
+					100 - resultEffects[axes[i].id] <= tiers[i2] ||
 					i2 === tiers.length - 1
 				) {
 					matchings[i] = axes[i].tiers[i2]
 					break
 				}
 			} else {
-				if (resultEffects[axes[i].id] < tiers[i2] || i2 === tiers.length - 1) {
+				if (resultEffects[axes[i].id] <= tiers[i2] || i2 === tiers.length - 1) {
 					matchings[i] = axes[i].tiers[axes[i].tiers.length - i2]
 					break
 				}
