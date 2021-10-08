@@ -1,3 +1,5 @@
+import * as yaml from "js-yaml"
+
 export interface Axis {
 	id: string
 	name: string
@@ -60,11 +62,28 @@ export const parentLoc = window.location.href.slice(
 	window.location.href.lastIndexOf("/")
 )
 
+function getData(name: string) {
+	const jsonLocation = "/json/" + name + ".json"
+	const yamlLocation = "/yaml/" + name + ".yaml"
+	if (isFile(jsonLocation)) {
+		return getJson(name)
+	} else {
+		return getYaml(name)
+	}
+}
+
 function getJson(name: string) {
 	var request = new XMLHttpRequest()
 	request.open("GET", parentLoc + "/json/" + name + ".json", false)
 	request.send(null)
 	return JSON.parse(request.responseText)
+}
+
+function getYaml(name: string) {
+	var request = new XMLHttpRequest()
+	request.open("GET", parentLoc + "/yaml/" + name + ".yaml", false)
+	request.send(null)
+	return yaml.load(request.responseText)
 }
 
 function getCss(name: string) {
@@ -100,12 +119,13 @@ export function fallbackImage(axis: Axis, right: boolean) {
 		: `value_images/${axis.id}_${right ? 1 : 0}.png`
 }
 
-export const axes: Axis[] = getJson("axes")
-export const buttons: Button[] = getJson("buttons")
-export const questions: Question[] = getJson("questions")
-export const general: General = getJson("general")
-export const ideologies: Ideology[] = getJson("ideologies")
-export const canvas: Canvas = getJson("canvas")
+export const axes: Axis[] = getData("axes")
+export const buttons: Button[] = getData("buttons")
+export const questions: Question[] = getData("questions")
+export const general: General = getData("general")
+export const ideologies: Ideology[] = getData("ideologies")
+export const canvas: Canvas = getData("canvas")
+
 export const customCss = `<style>${getCss("style")}</style>`
 
 var maxVals: {
