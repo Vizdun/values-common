@@ -1,0 +1,32 @@
+<buttons>
+	<buttons>
+		<name>Strongly Agree</name>
+		<modifier>1</modifier>
+		<color>#1b5e20</color>
+		<focusColor>#154a19</focusColor>
+	</buttons>
+	<buttons>
+		<name>Agree</name>
+		<modifier>0.5</modifier>
+		<color>#4caf50</color>
+		<focusColor>#29942e</focusColor>
+	</buttons>
+	<buttons>
+		<name>Neutral</name>
+		<modifier>0</modifier>
+		<color>#949494</color>
+		<focusColor>#656565</focusColor>
+	</buttons>
+	<buttons>
+		<name>Disagree</name>
+		<modifier>0.5</modifier>
+		<color>#f44336</color>
+		<focusColor>#d6271a</focusColor>
+	</buttons>
+	<buttons>
+		<name>Strongly Disagree</name>
+		<modifier>-1</modifier>
+		<color>#b71c1c</color>
+		<focusColor>#a00e0e</focusColor>
+	</buttons>
+</buttons>
