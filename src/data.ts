@@ -94,8 +94,11 @@ function getToml(name: string) {
 	request.open("GET", parentLoc + "/toml/" + name + ".toml", false)
 	request.send(null)
 	const parsed = toml.parse(request.responseText)
-	if (Object.keys(parsed)[0] === "0") {
-		return Object.values(parsed)
+	if (
+		Object.keys(parsed).length === 1 &&
+		typeof Object.values(parsed)[0] === "object"
+	) {
+		return Object.values(parsed)[0]
 	} else {
 		return parsed
 	}
