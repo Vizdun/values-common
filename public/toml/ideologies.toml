@@ -1,0 +1,364 @@
+[[ideologies]]
+name = "Anarcho-Communism"
+[ideologies.stats]
+econ = 100
+dipl = 50
+govt = 100
+scty = 90
+[[ideologies]]
+name = "Libertarian Communism"
+[ideologies.stats]
+econ = 100
+dipl = 70
+govt = 80
+scty = 80
+[[ideologies]]
+name = "Trotskyism"
+[ideologies.stats]
+econ = 100
+dipl = 100
+govt = 60
+scty = 80
+[[ideologies]]
+name = "Marxism"
+[ideologies.stats]
+econ = 100
+dipl = 70
+govt = 40
+scty = 80
+[[ideologies]]
+name = "De Leonism"
+[ideologies.stats]
+econ = 100
+dipl = 30
+govt = 30
+scty = 80
+[[ideologies]]
+name = "Leninism"
+[ideologies.stats]
+econ = 100
+dipl = 40
+govt = 20
+scty = 70
+[[ideologies]]
+name = "Stalinism/Maoism"
+[ideologies.stats]
+econ = 100
+dipl = 20
+govt = 0
+scty = 60
+[[ideologies]]
+name = "Religious Communism"
+[ideologies.stats]
+econ = 100
+dipl = 50
+govt = 30
+scty = 30
+[[ideologies]]
+name = "State Socialism"
+[ideologies.stats]
+econ = 80
+dipl = 30
+govt = 30
+scty = 70
+[[ideologies]]
+name = "Theocratic Socialism"
+[ideologies.stats]
+econ = 80
+dipl = 50
+govt = 30
+scty = 20
+[[ideologies]]
+name = "Religious Socialism"
+[ideologies.stats]
+econ = 80
+dipl = 50
+govt = 70
+scty = 20
+[[ideologies]]
+name = "Democratic Socialism"
+[ideologies.stats]
+econ = 80
+dipl = 50
+govt = 50
+scty = 80
+[[ideologies]]
+name = "Revolutionary Socialism"
+[ideologies.stats]
+econ = 80
+dipl = 20
+govt = 50
+scty = 70
+[[ideologies]]
+name = "Libertarian Socialism"
+[ideologies.stats]
+econ = 80
+dipl = 80
+govt = 80
+scty = 80
+[[ideologies]]
+name = "Anarcho-Syndicalism"
+[ideologies.stats]
+econ = 80
+dipl = 50
+govt = 100
+scty = 80
+[[ideologies]]
+name = "Left-Wing Populism"
+[ideologies.stats]
+econ = 60
+dipl = 40
+govt = 30
+scty = 70
+[[ideologies]]
+name = "Theocratic Distributism"
+[ideologies.stats]
+econ = 60
+dipl = 40
+govt = 30
+scty = 20
+[[ideologies]]
+name = "Distributism"
+[ideologies.stats]
+econ = 60
+dipl = 50
+govt = 50
+scty = 20
+[[ideologies]]
+name = "Social Liberalism"
+[ideologies.stats]
+econ = 60
+dipl = 60
+govt = 60
+scty = 80
+[[ideologies]]
+name = "Christian Democracy"
+[ideologies.stats]
+econ = 60
+dipl = 60
+govt = 50
+scty = 30
+[[ideologies]]
+name = "Social Democracy"
+[ideologies.stats]
+econ = 60
+dipl = 70
+govt = 60
+scty = 80
+[[ideologies]]
+name = "Progressivism"
+[ideologies.stats]
+econ = 60
+dipl = 80
+govt = 60
+scty = 100
+[[ideologies]]
+name = "Anarcho-Mutualism"
+[ideologies.stats]
+econ = 60
+dipl = 50
+govt = 100
+scty = 70
+[[ideologies]]
+name = "National Totalitarianism"
+[ideologies.stats]
+econ = 50
+dipl = 20
+govt = 0
+scty = 50
+[[ideologies]]
+name = "Global Totalitarianism"
+[ideologies.stats]
+econ = 50
+dipl = 80
+govt = 0
+scty = 50
+[[ideologies]]
+name = "Technocracy"
+[ideologies.stats]
+econ = 60
+dipl = 60
+govt = 20
+scty = 70
+[[ideologies]]
+name = "Centrist"
+[ideologies.stats]
+econ = 50
+dipl = 50
+govt = 50
+scty = 50
+[[ideologies]]
+name = "Liberalism"
+[ideologies.stats]
+econ = 50
+dipl = 60
+govt = 60
+scty = 60
+[[ideologies]]
+name = "Religious Anarchism"
+[ideologies.stats]
+econ = 50
+dipl = 50
+govt = 100
+scty = 20
+[[ideologies]]
+name = "Right-Wing Populism"
+[ideologies.stats]
+econ = 40
+dipl = 30
+govt = 30
+scty = 30
+[[ideologies]]
+name = "Moderate Conservatism"
+[ideologies.stats]
+econ = 40
+dipl = 40
+govt = 50
+scty = 30
+[[ideologies]]
+name = "Reactionary"
+[ideologies.stats]
+econ = 40
+dipl = 40
+govt = 40
+scty = 10
+[[ideologies]]
+name = "Social Libertarianism"
+[ideologies.stats]
+econ = 60
+dipl = 70
+govt = 80
+scty = 70
+[[ideologies]]
+name = "Libertarianism"
+[ideologies.stats]
+econ = 40
+dipl = 60
+govt = 80
+scty = 60
+[[ideologies]]
+name = "Anarcho-Egoism"
+[ideologies.stats]
+econ = 40
+dipl = 50
+govt = 100
+scty = 50
+[[ideologies]]
+name = "Nazism"
+[ideologies.stats]
+econ = 40
+dipl = 0
+govt = 0
+scty = 5
+[[ideologies]]
+name = "Autocracy"
+[ideologies.stats]
+econ = 50
+dipl = 20
+govt = 20
+scty = 50
+[[ideologies]]
+name = "Fascism"
+[ideologies.stats]
+econ = 40
+dipl = 20
+govt = 20
+scty = 20
+[[ideologies]]
+name = "Capitalist Fascism"
+[ideologies.stats]
+econ = 20
+dipl = 20
+govt = 20
+scty = 20
+[[ideologies]]
+name = "Conservatism"
+[ideologies.stats]
+econ = 30
+dipl = 40
+govt = 40
+scty = 20
+[[ideologies]]
+name = "Neo-Liberalism"
+[ideologies.stats]
+econ = 30
+dipl = 30
+govt = 50
+scty = 60
+[[ideologies]]
+name = "Classical Liberalism"
+[ideologies.stats]
+econ = 30
+dipl = 60
+govt = 60
+scty = 80
+[[ideologies]]
+name = "Authoritarian Capitalism"
+[ideologies.stats]
+econ = 20
+dipl = 30
+govt = 20
+scty = 40
+[[ideologies]]
+name = "State Capitalism"
+[ideologies.stats]
+econ = 20
+dipl = 50
+govt = 30
+scty = 50
+[[ideologies]]
+name = "Neo-Conservatism"
+[ideologies.stats]
+econ = 20
+dipl = 20
+govt = 40
+scty = 20
+[[ideologies]]
+name = "Fundamentalism"
+[ideologies.stats]
+econ = 20
+dipl = 30
+govt = 30
+scty = 5
+[[ideologies]]
+name = "Libertarian Capitalism"
+[ideologies.stats]
+econ = 20
+dipl = 50
+govt = 80
+scty = 60
+[[ideologies]]
+name = "Market Anarchism"
+[ideologies.stats]
+econ = 20
+dipl = 50
+govt = 100
+scty = 50
+[[ideologies]]
+name = "Objectivism"
+[ideologies.stats]
+econ = 10
+dipl = 50
+govt = 90
+scty = 40
+[[ideologies]]
+name = "Totalitarian Capitalism"
+[ideologies.stats]
+econ = 0
+dipl = 30
+govt = 0
+scty = 50
+[[ideologies]]
+name = "Ultra-Capitalism"
+[ideologies.stats]
+econ = 0
+dipl = 40
+govt = 50
+scty = 50
+[[ideologies]]
+name = "Anarcho-Capitalism"
+[ideologies.stats]
+econ = 0
+dipl = 50
+govt = 100
+scty = 50
