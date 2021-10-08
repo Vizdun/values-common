@@ -1,5 +1,6 @@
 import * as yaml from "js-yaml"
 import * as toml from "toml"
+import * as xml from "fast-xml-parser"
 
 export interface Axis {
 	id: string
@@ -66,12 +67,15 @@ export const parentLoc = window.location.href.slice(
 function getData(name: string) {
 	const jsonLocation = "/json/" + name + ".json"
 	const yamlLocation = "/yaml/" + name + ".yaml"
+	const tomlLocation = "/toml/" + name + ".toml"
 	if (isFile(jsonLocation)) {
 		return getJson(name)
 	} else if (isFile(yamlLocation)) {
 		return getYaml(name)
-	} else {
+	} else if (isFile(tomlLocation)) {
 		return getToml(name)
+	} else {
+		return getXml(name)
 	}
 }
 
@@ -94,10 +98,19 @@ function getToml(name: string) {
 	request.open("GET", parentLoc + "/toml/" + name + ".toml", false)
 	request.send(null)
 	const parsed = toml.parse(request.responseText)
-	if (
-		Object.keys(parsed).length === 1 &&
-		typeof Object.values(parsed)[0] === "object"
-	) {
+	if (Object.keys(parsed)[0] === name) {
+		return Object.values(parsed)[0]
+	} else {
+		return parsed
+	}
+}
+
+function getXml(name: string) {
+	var request = new XMLHttpRequest()
+	request.open("GET", parentLoc + "/xml/" + name + ".xml", false)
+	request.send(null)
+	const parsed = Object.values(xml.parse(request.responseText))[0]
+	if (Object.keys(parsed)[0] === name) {
 		return Object.values(parsed)[0]
 	} else {
 		return parsed

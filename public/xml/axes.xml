@@ -1,0 +1,93 @@
+<axes>
+	<axes>
+		<id>econ</id>
+		<name>Economic</name>
+		<weights>10</weights>
+		<weights>15</weights>
+		<weights>20</weights>
+		<weights>10</weights>
+		<weights>20</weights>
+		<weights>15</weights>
+		<weights>10</weights>
+		<left>
+			<name>Equality</name>
+			<color>#d32f2f</color>
+			<description>Those with higher Equality scores believe the economy should distribute value evenly among the populace. They tend to support progressive tax codes, social programs, and at high values, socialism.</description>
+		</left>
+		<right>
+			<name>Markets</name>
+			<color>#00796b</color>
+			<description>Those with higher Market scores believe the economy should be focused on rapid growth. They tend to support lower taxes, privatization, deregulation, and at high values, laissez-faire capitalism.</description>
+		</right>
+		<tiers>Communist</tiers>
+		<tiers>Socialist</tiers>
+		<tiers>Social</tiers>
+		<tiers>Centrist</tiers>
+		<tiers>Market</tiers>
+		<tiers>Capitalist</tiers>
+		<tiers>Laissez-Faire</tiers>
+	</axes>
+	<axes>
+		<id>dipl</id>
+		<name>Diplomatic</name>
+		<left>
+			<name>Globe</name>
+			<color>#0288d1</color>
+			<description>Those with higher Globe scores are cosmopolitan and globalist. They often believe in a peaceful foreign policy, emphasizing diplomacy, cooperation, integration, and at high values, a world government.</description>
+		</left>
+		<right>
+			<name>Nation</name>
+			<color>#f57c00</color>
+			<description>Those with higher Nation scores are patriotic and nationalist. They often believe in an aggressive foreign policy, valuing the military, strength, sovereignty, and at high values, territorial expansion.</description>
+		</right>
+		<tiers>Cosmopolitan</tiers>
+		<tiers>Internationalist</tiers>
+		<tiers>Peaceful</tiers>
+		<tiers>Balanced</tiers>
+		<tiers>Patriotic</tiers>
+		<tiers>Nationalist</tiers>
+		<tiers>Chauvinist</tiers>
+	</axes>
+	<axes>
+		<id>govt</id>
+		<name>Civil</name>
+		<left>
+			<name>Liberty</name>
+			<color>#fbc02d</color>
+			<description>Those with higher Liberty scores believe in strong civil liberties. They tend to support democracy and oppose state intervention in personal lives. Note that this refers to civil liberties, not economic liberties.</description>
+		</left>
+		<right>
+			<name>Authority</name>
+			<color>#303f9f</color>
+			<description>Those with higher Authority scores believe in strong state power. They tend to support state intervention in personal lives, government surveillance, and at high values, censorship or autocracy.</description>
+		</right>
+		<tiers>Anarchist</tiers>
+		<tiers>Libertarian</tiers>
+		<tiers>Liberal</tiers>
+		<tiers>Moderate</tiers>
+		<tiers>Statist</tiers>
+		<tiers>Authoritarian</tiers>
+		<tiers>Totalitarian</tiers>
+	</axes>
+	<axes>
+		<id>scty</id>
+		<name>Society</name>
+		<left>
+			<name>Progress</name>
+			<color>#7b1fa2</color>
+			<description>Those with higher Progress scores believe in social change and rationality. Though not always, they are usually secular or atheist, and support environmental action and scientific or technological research.</description>
+		</left>
+		<right>
+			<name>Tradition</name>
+			<color>#689f38</color>
+			<description>Those with higher Tradition scores believe in traditional values and strict adherence to a moral code. Though not always, they are usually religious, and support the status quo or the status quo ante.</description>
+		</right>
+		<tiers>Revolutionary</tiers>
+		<tiers>Very Progressive</tiers>
+		<tiers>Progressive</tiers>
+		<tiers>Neutral</tiers>
+		<tiers>Traditional</tiers>
+		<tiers>Very Traditional</tiers>
+		<tiers>Reactionary</tiers>
+	</axes>
+</axes>
