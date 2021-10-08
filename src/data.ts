@@ -1,4 +1,5 @@
 import * as yaml from "js-yaml"
+import * as toml from "toml"
 
 export interface Axis {
 	id: string
@@ -67,8 +68,10 @@ function getData(name: string) {
 	const yamlLocation = "/yaml/" + name + ".yaml"
 	if (isFile(jsonLocation)) {
 		return getJson(name)
-	} else {
+	} else if (isFile(yamlLocation)) {
 		return getYaml(name)
+	} else {
+		return getToml(name)
 	}
 }
 
@@ -84,6 +87,18 @@ function getYaml(name: string) {
 	request.open("GET", parentLoc + "/yaml/" + name + ".yaml", false)
 	request.send(null)
 	return yaml.load(request.responseText)
+}
+
+function getToml(name: string) {
+	var request = new XMLHttpRequest()
+	request.open("GET", parentLoc + "/toml/" + name + ".toml", false)
+	request.send(null)
+	const parsed = toml.parse(request.responseText)
+	if (Object.keys(parsed)[0] === "0") {
+		return Object.values(parsed)
+	} else {
+		return parsed
+	}
 }
 
 function getCss(name: string) {
