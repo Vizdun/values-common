@@ -101,7 +101,7 @@ export function renderCanvas(
 			canvas.barThickness ?? defThickness
 		)
 
-		ctx.fillStyle = canvas.fgColor
+		ctx.fillStyle = canvas.valColor ?? canvas.fgColor
 		ctx.font =
 			0.625 * (canvas.barThickness ?? defThickness) + "px " + general.mainFont
 

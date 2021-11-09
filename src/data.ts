@@ -50,6 +50,7 @@ export interface Ideology {
 export interface Canvas {
 	fgColor: string
 	bgColor: string
+	valColor?: string
 	barThickness?: number
 	outlineThickness?: number
 	limit?: number
