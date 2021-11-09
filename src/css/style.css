@@ -256,3 +256,48 @@ span.weight-300 {
 	height: 3rem;
 	width: 3rem;
 }
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: #141414;
+		border-color: #000000;
+	}
+	html {
+		background-color: #505050;
+	}
+	h1,
+	h2,
+	p.axis_name,
+	div.axis_name {
+		color: #ffffff;
+	}
+	p,
+	.question,
+	.blurb-text {
+		color: #c0c0c0;
+	}
+	.button,
+	.small_button,
+	.small_button_off {
+		border: 8px solid #080808;
+	}
+	div.center,
+	.spacer,
+	.explanation_bg {
+		background-color: #080808;
+	}
+	.bar {
+		border-color: #000000;
+	}
+	p.question {
+		border: 8px solid #080808;
+		background-color: #000000;
+		color: #ffffff;
+	}
+	.text-wrapper {
+		color: #000000;
+	}
+	.small_button:hover,
+	.small_button:focus {
+		background: #000000;
+	}
+}
