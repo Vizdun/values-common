@@ -2,8 +2,11 @@ import {
 	axes,
 	buttons,
 	customCss,
-	maxEffects,
+	maxEffects as maxEffectsLong,
+	maxEffectsShort,
+	Question,
 	questions as questions_original,
+	questionsShort,
 } from "./data"
 import { quizHtml } from "./pages/quiz"
 
@@ -15,8 +18,13 @@ var effects: {
 	[index: string]: number
 }[] = []
 
-export function quiz(shuffled: boolean = false) {
-	var questions = shuffled
+export function quiz(shuffled: boolean = false, short: boolean = false) {
+	var questions: Question[] = short
+		? shuffled
+			? // @ts-ignore
+			  questionsShort.sort(() => 0.5 - Math.random())
+			: questionsShort
+		: shuffled
 		? questions_original.sort(() => 0.5 - Math.random())
 		: questions_original
 
@@ -45,7 +53,7 @@ export function quiz(shuffled: boolean = false) {
 		initQuestion()
 	}
 
-	function showResults() {
+	function showResults(short: boolean = false) {
 		var finalEffects = effects[0]
 
 		for (const axis of axes) {
@@ -57,6 +65,8 @@ export function quiz(shuffled: boolean = false) {
 		}
 
 		var score = finalEffects
+
+		const maxEffects = short ? maxEffectsShort : maxEffectsLong
 
 		for (const key in finalEffects) {
 			score[key] =
@@ -86,7 +96,7 @@ export function quiz(shuffled: boolean = false) {
 						questions[questionIndex].effect[axis.id] * buttons[i].modifier
 				}
 				questionIndex++
-				showResults()
+				showResults(short)
 			}
 		})
 	}

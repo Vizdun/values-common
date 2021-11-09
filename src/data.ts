@@ -103,6 +103,11 @@ export function fallbackImage(axis: Axis, right: boolean) {
 export const axes: Axis[] = getJson("axes")
 export const buttons: Button[] = getJson("buttons")
 export const questions: Question[] = getJson("questions")
+export const questionsShort: Question[] | false = isFile(
+	"json/questions_short.json"
+)
+	? getJson("questions_short")
+	: false
 export const general: General = getJson("general")
 export const ideologies: Ideology[] = getJson("ideologies")
 export const canvas: Canvas = getJson("canvas")
@@ -123,3 +128,20 @@ for (const question of questions) {
 }
 
 export const maxEffects = maxVals
+
+var maxVals: {
+	[index: string]: number
+} = {}
+
+for (const axis of axes) {
+	maxVals[axis.id] = 0
+}
+
+// @ts-ignore
+for (const question of questionsShort as Question[]) {
+	for (const axis of axes) {
+		maxVals[axis.id] += Math.abs(question.effect[axis.id])
+	}
+}
+
+export const maxEffectsShort = maxVals

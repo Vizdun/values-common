@@ -1,5 +1,5 @@
 import "./css/style.css"
-import { customCss, general } from "./data"
+import { customCss, general, questionsShort } from "./data"
 import { indexHtml } from "./pages/index"
 import { instructions } from "./pages/instructions"
 import { quiz } from "./quiz"
@@ -35,6 +35,16 @@ export function changePage(dest: number) {
 			document.getElementById("shuffleButton").addEventListener("click", () => {
 				quiz(true)
 			})
+			if (questionsShort) {
+				document.getElementById("shortButton").addEventListener("click", () => {
+					quiz(false, true)
+				})
+				document
+					.getElementById("shortShuffleButton")
+					.addEventListener("click", () => {
+						quiz(true, true)
+					})
+			}
 			break
 		case Page.quiz:
 			quiz()
