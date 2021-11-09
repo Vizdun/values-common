@@ -1,3 +1,4 @@
+import { changePage, Page } from "."
 import {
 	axes,
 	buttons,
@@ -40,6 +41,8 @@ export function quiz(shuffled: boolean = false, short: boolean = false) {
 		if (questionIndex > 0) {
 			questionIndex--
 			initQuestion()
+		} else {
+			changePage(Page.index)
 		}
 	}
 
