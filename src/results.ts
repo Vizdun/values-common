@@ -90,6 +90,15 @@ export function results() {
 	document.getElementById("backButton").addEventListener("click", () => {
 		location.search = ""
 	})
+
+	document.getElementById("downloadButton").addEventListener("click", () => {
+		var link = document.createElement("a")
+		link.download = "result.png"
+		// @ts-ignore
+		link.href = document.getElementById("banner").toDataURL()
+		link.click()
+	})
+
 	window.onload = () => {
 		renderCanvas(resultEffects, ideology, matchingsv)
 	}

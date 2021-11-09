@@ -248,3 +248,11 @@ span.weight-300 {
 	margin-left: auto;
 	margin-right: auto;
 }
+#downloadButton {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	color: #444444;
+	height: 3rem;
+	width: 3rem;
+}

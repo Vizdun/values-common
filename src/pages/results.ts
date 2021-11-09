@@ -6,6 +6,7 @@ import {
 	ideologies,
 	Ideology,
 } from "../data"
+import download from "../svg/download.svg"
 
 export function resultsHtml(
 	resultEffects: { [index: string]: number },
@@ -55,6 +56,7 @@ ${resultsAxisHtml}
 <canvas id="banner" width="800" height="${
 		170 + 120 * axes.length + -18 - 6
 	}"></canvas>
+<div id="downloadButton">${download}</div>
 <button class="button" id="backButton">Back</button>
 <br />`
 }
