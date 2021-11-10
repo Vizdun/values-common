@@ -9,9 +9,11 @@ import {
 import download from "../svg/download.svg"
 
 export function leaningValue(val: number) {
-	const tiers = ["Neutral", "Moderately", "Strongly", "Extremely", "Fanaticly"]
+	const tiers = ["Neutral", "Moderate", "Strong", "Extreme", "Fanatic"]
 
-	return tiers[Math.round(Math.abs(val - 50) * 0.02 * tiers.length - 1)]
+	var indx = Math.round(Math.abs(val - 50) * 0.02 * tiers.length) - 1
+
+	return tiers[indx > 0 ? indx : 0]
 }
 
 export function resultsHtml(
