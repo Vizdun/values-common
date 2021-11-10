@@ -35,9 +35,13 @@ function matchIdeology(stats: { [index: string]: number }) {
 }
 
 function matchings(resultEffects: { [index: string]: number }) {
-	var matchings: string[] = []
+	var matchings: (string | false)[] = []
 
 	for (let i = 0; i < axes.length; i++) {
+		if (!axes[i].tiers) {
+			matchings[i] = false
+			continue
+		}
 		var presum = 0
 		for (let i2 = 0; i2 < axes[i].tiers.length; i2++) {
 			presum += axes[i]?.weights?.[i2] ?? 1
@@ -59,7 +63,6 @@ function matchings(resultEffects: { [index: string]: number }) {
 					break
 				}
 			} else {
-				console.log(resultEffects[axes[i].id], tiers[i2])
 				if (resultEffects[axes[i].id] <= tiers[i2] || i2 === tiers.length - 1) {
 					matchings[i] = axes[i].tiers[axes[i].tiers.length - i2 - 1]
 					break

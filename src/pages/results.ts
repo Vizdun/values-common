@@ -8,10 +8,16 @@ import {
 } from "../data"
 import download from "../svg/download.svg"
 
+export function leaningValue(val: number) {
+	const tiers = ["Neutral", "Moderately", "Strongly", "Extremely", "Fanaticly"]
+
+	return tiers[Math.round(Math.abs(val - 50) * 0.02 * tiers.length - 1)]
+}
+
 export function resultsHtml(
 	resultEffects: { [index: string]: number },
 	ideology: Ideology,
-	matchings: string[]
+	matchings: (string | false)[]
 ) {
 	var resultsAxisHtml = ""
 
@@ -20,9 +26,13 @@ export function resultsHtml(
 
 		const maxShown = canvas.limit ?? 30
 
-		resultsAxisHtml += `<h2>${axis.name} Axis: ${
+		resultsAxisHtml += `<h2>${`${
 			matchings[i]
-		}<span class="weight-300" id="economic-label"></span></h2><div class="axis"><img src="${fallbackImage(
+				? `${axis.name} Axis: ${matchings[i]}`
+				: `${leaningValue(resultEffects[axis.id])} ${
+						resultEffects[axis.id] > 50 ? axis.right.name : axis.left.name
+				  }`
+		}`}<span class="weight-300" id="economic-label"></span></h2><div class="axis"><img src="${fallbackImage(
 			axis,
 			false
 		)}" height="128pt" /><div style="background-color:${

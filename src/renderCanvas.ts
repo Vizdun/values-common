@@ -1,9 +1,10 @@
 import { axes, canvas, fallbackImage, general, Ideology } from "./data"
+import { leaningValue } from "./pages/results"
 
 export function renderCanvas(
 	resultEffects: { [index: string]: number },
 	ideology: Ideology,
-	matchings: string[]
+	matchings: (string | false)[]
 ) {
 	const globalY = -18 - 6
 
@@ -119,6 +120,16 @@ export function renderCanvas(
 		}
 		ctx.font = "300 30px " + general.mainFont
 		ctx.textAlign = "center"
-		ctx.fillText(axis.name + " Axis: " + matchings[index], 400, biTHeight)
+		ctx.fillText(
+			`${
+				matchings[index]
+					? `${axis.name} Axis: ${matchings[index]}`
+					: `${leaningValue(resultEffects[axis.id])} ${
+							resultEffects[axis.id] > 50 ? axis.right.name : axis.left.name
+					  }`
+			}`,
+			400,
+			biTHeight
+		)
 	})
 }
