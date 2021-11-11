@@ -74,7 +74,7 @@ export function renderCanvas(
 		}
 		img2.src = fallbackImage(axis, true)
 
-		ctx.fillStyle = canvas.fgColor
+		ctx.fillStyle = canvas.valColor ?? canvas.fgColor
 		ctx.fillRect(
 			120,
 			bHeight,
