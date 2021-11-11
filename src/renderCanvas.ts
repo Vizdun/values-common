@@ -118,6 +118,7 @@ export function renderCanvas(
 				bitHeight
 			)
 		}
+		ctx.fillStyle = canvas.fgColor
 		ctx.font = "300 30px " + general.mainFont
 		ctx.textAlign = "center"
 		ctx.fillText(
