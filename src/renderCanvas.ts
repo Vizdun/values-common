@@ -1,5 +1,5 @@
 import { axes, canvas, fallbackImage, general, Ideology } from "./data"
-import { leaningValue } from "./pages/results"
+import { leaningLabel } from "./pages/results"
 
 export function renderCanvas(
 	resultEffects: { [index: string]: number },
@@ -125,9 +125,7 @@ export function renderCanvas(
 			`${
 				matchings[index]
 					? `${axis.name} Axis: ${matchings[index]}`
-					: `${leaningValue(resultEffects[axis.id])} ${
-							resultEffects[axis.id] < 50 ? axis.right.name : axis.left.name
-					  }`
+					: `${leaningLabel(resultEffects[axis.id], axis)}`
 			}`,
 			400,
 			biTHeight

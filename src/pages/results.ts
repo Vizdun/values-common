@@ -1,5 +1,6 @@
 import {
 	axes,
+	Axis,
 	canvas,
 	fallbackImage,
 	general,
@@ -8,12 +9,23 @@ import {
 } from "../data"
 import download from "../svg/download.svg"
 
-export function leaningValue(val: number) {
+function leaningValue(val: number) {
 	const tiers = ["Neutral", "Moderate", "Strong", "Extreme", "Fanatic"]
 
 	var indx = Math.round(Math.abs(val - 50) * 0.02 * tiers.length) - 1
 
 	return tiers[indx > 0 ? indx : 0]
+}
+
+export function leaningLabel(val: number, axis: Axis) {
+	return (
+		leaningValue(val) +
+		(Math.abs(val - 50) > 10
+			? val > 50
+				? axis.right.name
+				: axis.left.name
+			: "")
+	)
 }
 
 export function resultsHtml(
@@ -31,9 +43,7 @@ export function resultsHtml(
 		resultsAxisHtml += `<h2>${`${
 			matchings[i]
 				? `${axis.name} Axis: ${matchings[i]}`
-				: `${leaningValue(resultEffects[axis.id])} ${
-						resultEffects[axis.id] < 50 ? axis.right.name : axis.left.name
-				  }`
+				: `${leaningLabel(resultEffects[i], axis)}`
 		}`}<span class="weight-300" id="economic-label"></span></h2><div class="axis"><img src="${fallbackImage(
 			axis,
 			false
