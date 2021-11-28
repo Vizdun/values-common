@@ -21,8 +21,8 @@ export function leaningLabel(val: number, axis: Axis) {
 	return (
 		leaningValue(val) +
 		" " +
-		(Math.abs(val - 50) > 10
-			? leaningValue(val) != "Neutral"
+		(leaningValue(val) != "Neutral"
+			? val > 50
 				? axis.left.name
 				: axis.right.name
 			: "")
