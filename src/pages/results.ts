@@ -12,9 +12,13 @@ import download from "../svg/download.svg"
 function leaningValue(val: number) {
 	const tiers = ["Neutral", "Moderate", "Strong", "Extreme", "Fanatic"]
 
-	var indx = Math.round(Math.abs(val - 50) * 0.02 * tiers.length) - 1
+	for (let i = 0; i < tiers.length; i++) {
+		if (Math.abs(val - 50) < i * (50 / tiers.length) + 10) {
+			return tiers[i]
+		}
+	}
 
-	return tiers[indx > 0 ? indx : 0]
+	return ""
 }
 
 export function leaningLabel(val: number, axis: Axis) {
