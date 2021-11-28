@@ -20,6 +20,7 @@ function leaningValue(val: number) {
 export function leaningLabel(val: number, axis: Axis) {
 	return (
 		leaningValue(val) +
+		" " +
 		(Math.abs(val - 50) > 10
 			? val > 50
 				? axis.right.name
@@ -43,7 +44,7 @@ export function resultsHtml(
 		resultsAxisHtml += `<h2>${`${
 			matchings[i]
 				? `${axis.name} Axis: ${matchings[i]}`
-				: `${leaningLabel(resultEffects[i], axis)}`
+				: `${leaningLabel(resultEffects[axis.id], axis)}`
 		}`}<span class="weight-300" id="economic-label"></span></h2><div class="axis"><img src="${fallbackImage(
 			axis,
 			false
