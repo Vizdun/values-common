@@ -32,7 +32,7 @@ export function resultsHtml(
 			matchings[i]
 				? `${axis.name} Axis: ${matchings[i]}`
 				: `${leaningValue(resultEffects[axis.id])} ${
-						resultEffects[axis.id] > 50 ? axis.right.name : axis.left.name
+						resultEffects[axis.id] < 50 ? axis.right.name : axis.left.name
 				  }`
 		}`}<span class="weight-300" id="economic-label"></span></h2><div class="axis"><img src="${fallbackImage(
 			axis,

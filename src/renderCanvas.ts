@@ -126,7 +126,7 @@ export function renderCanvas(
 				matchings[index]
 					? `${axis.name} Axis: ${matchings[index]}`
 					: `${leaningValue(resultEffects[axis.id])} ${
-							resultEffects[axis.id] > 50 ? axis.right.name : axis.left.name
+							resultEffects[axis.id] < 50 ? axis.right.name : axis.left.name
 					  }`
 			}`,
 			400,
