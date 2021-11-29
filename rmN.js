@@ -7,3 +7,8 @@ fs.writeFileSync(
 		.toString()
 		.replace(/\\n\s*/g, "\\n")
 )
+
+fs.rmSync("dist", {
+	recursive: true,
+	force: true,
+})
