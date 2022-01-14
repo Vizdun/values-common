@@ -256,6 +256,10 @@ span.weight-300 {
 	height: 3rem;
 	width: 3rem;
 }
+.resultIcon {
+	height: 128pt;
+	width: 128pt;
+}
 @media (prefers-color-scheme: dark) {
 	body {
 		background-color: #141414;

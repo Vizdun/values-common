@@ -1,5 +1,5 @@
 import arrow from "../svg/double_arrow.svg"
-import { axes, fallbackImage, general } from "../data"
+import { axes, general } from "../data"
 
 document.head.title = general.title
 
@@ -7,14 +7,8 @@ var axesIconsHtml = ""
 for (const axis of axes) {
 	axesIconsHtml += `<div class="column">`
 	axesIconsHtml += `<div class="axis_name quadcolumn">${axis.name.toUpperCase()}</div>`
-	axesIconsHtml += `<a href="#anchor-${axis.id}"><img src="${fallbackImage(
-		axis,
-		false
-	)}" class="quadcolumn"></a>`
-	axesIconsHtml += `<a href="#anchor-${axis.id}"><img src="${fallbackImage(
-		axis,
-		true
-	)}" class="quadcolumn"></a>`
+	axesIconsHtml += `<a href="#anchor-${axis.id}"><img src="${axis.left.icon}" class="quadcolumn" /></a>`
+	axesIconsHtml += `<a href="#anchor-${axis.id}"><img src="${axis.right.icon}" class="quadcolumn" /></a>`
 	axesIconsHtml += `</div>`
 }
 

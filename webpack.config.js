@@ -16,7 +16,7 @@ module.exports = {
 			{ test: /\.css$/, use: [MiniCssExtractPlugin.loader, "css-loader"] },
 			{ test: /\.pug$/, loader: "pug-loader" },
 			{
-				test: /\.svg$/,
+				test: /\.(svg|txt)$/,
 				use: "raw-loader",
 			},
 		],
@@ -35,7 +35,7 @@ module.exports = {
 			inject: false,
 			cache: false,
 			template: "src/template.pug",
-			filename: "../public/index.html",
+			filename: "../index.html",
 			// favicon: "favicon.ico",
 			title: "values-common",
 		}),

@@ -1,8 +1,6 @@
 import {
 	axes,
 	Axis,
-	canvas,
-	fallbackImage,
 	general,
 	ideologies,
 	Ideology,
@@ -43,16 +41,13 @@ export function resultsHtml(
 	for (let i = 0; i < axes.length; i++) {
 		const axis = axes[i]
 
-		const maxShown = canvas.limit ?? 30
+		const maxShown = 30
 
 		resultsAxisHtml += `<h2>${`${
 			matchings[i]
 				? `${axis.name} Axis: ${matchings[i]}`
 				: `${leaningLabel(resultEffects[axis.id], axis)}`
-		}`}<span class="weight-300" id="economic-label"></span></h2><div class="axis"><img src="${fallbackImage(
-			axis,
-			false
-		)}" height="128pt" /><div style="background-color:${
+		}`}<span class="weight-300" id="economic-label"></span></h2><div class="axis"><img class="resultIcon" src="${axis.left.icon}" /><div style="background-color:${
 			axis.left.color
 		};border-right-style:solid;text-align:left;width:${
 			resultEffects[axis.id]
@@ -68,10 +63,7 @@ export function resultsHtml(
 			100 - resultEffects[axis.id] > maxShown
 				? (100 - resultEffects[axis.id]).toFixed(1) + "%"
 				: ""
-		}</div></div><img src="${fallbackImage(
-			axis,
-			true
-		)}" height="128pt" /></div>`
+		}</div></div><img class="resultIcon" src="${axis.right.icon}" /></div>`
 	}
 
 	return `<h1>${general.title}</h1>

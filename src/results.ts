@@ -1,5 +1,5 @@
 import { changePage, Page } from "."
-import { axes, customCss, ideologies } from "./data"
+import { axes, ideologies } from "./data"
 import { resultsHtml } from "./pages/results"
 import { renderCanvas } from "./renderCanvas"
 
@@ -10,15 +10,7 @@ function matchIdeology(stats: { [index: string]: number }) {
 				var difs: { [index: string]: number } = {}
 
 				for (const stat in stats) {
-					difs[stat] =
-						Math.abs(item.stats[stat] - stats[stat]) *
-						(axes.find((item) => {
-							return item.id === stat
-						}).weight
-							? axes.find((item) => {
-									return item.id === stat
-							  }).weight
-							: 1)
+					difs[stat] = Math.abs(item.stats[stat] - stats[stat])
 				}
 
 				return [
@@ -44,13 +36,13 @@ function matchings(resultEffects: { [index: string]: number }) {
 		}
 		var presum = 0
 		for (let i2 = 0; i2 < axes[i].tiers.length; i2++) {
-			presum += axes[i]?.weights?.[i2] ?? 1
+			presum += 1
 		}
 
 		var sum = 0
 		var tiers: number[] = []
 		for (let i2 = 0; i2 < axes[i].tiers.length; i2++) {
-			sum += (100 / presum) * (axes[i]?.weights?.[i2] ?? 1)
+			sum += 100 / presum
 			tiers[i2] = sum
 		}
 		for (let i2 = 0; i2 < tiers.length; i2++) {
@@ -87,8 +79,7 @@ export function results() {
 	const ideology = matchIdeology(resultEffects)
 	const matchingsv = matchings(resultEffects)
 
-	document.body.innerHTML =
-		resultsHtml(resultEffects, ideology, matchingsv) + customCss
+	document.body.innerHTML = resultsHtml(resultEffects, ideology, matchingsv)
 
 	document.getElementById("backButton").addEventListener("click", () => {
 		location.search = ""

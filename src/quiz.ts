@@ -2,12 +2,10 @@ import { changePage, Page } from "."
 import {
 	axes,
 	buttons,
-	customCss,
 	maxEffects as maxEffectsLong,
 	maxEffectsShort,
 	Question,
 	questions as questions_original,
-	questionsShort,
 } from "./data"
 import { quizHtml } from "./pages/quiz"
 
@@ -20,12 +18,7 @@ var effects: {
 }[] = []
 
 export function quiz(shuffled: boolean = false, short: boolean = false) {
-	var questions: Question[] = short
-		? shuffled
-			? // @ts-ignore
-			  questionsShort.sort(() => 0.5 - Math.random())
-			: questionsShort
-		: shuffled
+	var questions: Question[] = shuffled
 		? questions_original.sort(() => 0.5 - Math.random())
 		: questions_original
 
@@ -84,7 +77,7 @@ export function quiz(shuffled: boolean = false, short: boolean = false) {
 				.join(",")
 	}
 
-	document.body.innerHTML = quizHtml + customCss
+	document.body.innerHTML = quizHtml
 
 	let buttonElements = document.getElementsByClassName("button")
 
