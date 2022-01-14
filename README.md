@@ -1,1 +1,1 @@
-Welcome, to the single most convoluted codebase in the galaxy!
+Welcome, to the most convoluted codebase in the galaxy!
