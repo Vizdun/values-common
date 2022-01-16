@@ -1,18 +1,18 @@
+import jsoned_data from "./jsoned_data.txt"
+
 export interface Axis {
 	id: string
 	name: string
 	left: Value
 	right: Value
 	tiers: string[]
-	weights?: number[]
-	weight?: number
 }
 
 export interface Value {
 	name: string
 	description: string
 	color: string
-	icon?: string
+	icon: string
 }
 
 export interface General {
@@ -21,9 +21,9 @@ export interface General {
 	description: string
 	valQuestion: string
 	valDescription: string
-	mainFont: string
 	link: string
 	version: string
+	favicon: string
 }
 
 export interface Button {
@@ -47,72 +47,23 @@ export interface Ideology {
 	}
 }
 
-export interface Canvas {
-	fgColor: string
-	bgColor: string
-	valColor?: string
-	barThickness?: number
-	outlineThickness?: number
-	limit?: number
-}
-
-export const parentLoc = window.location.href.slice(
-	0,
-	window.location.href.lastIndexOf("/")
+const mainJson: {
+	axes: Axis[],
+	buttons: Button[]
+	questions: Question[]
+	general: General,
+	results: Ideology[]
+} = JSON.parse(
+	jsoned_data.slice(
+		3, -3
+	)
 )
 
-function getJson(name: string) {
-	var request = new XMLHttpRequest()
-	request.open("GET", parentLoc + "/json/" + name + ".json", false)
-	request.send(null)
-	return JSON.parse(request.responseText)
-}
-
-function getCss(name: string) {
-	var request = new XMLHttpRequest()
-	request.open("GET", parentLoc + "/" + name + ".css", false)
-	request.send(null)
-	return request.responseText
-}
-
-function isFile(name: string) {
-	var request = new XMLHttpRequest()
-	request.open("HEAD", parentLoc + "/" + name, false)
-	request.send(null)
-	switch (request.status) {
-		case 200:
-			return true
-		default:
-			return false
-	}
-}
-
-export function fallbackImage(axis: Axis, right: boolean) {
-	return right
-		? axis.right.icon
-			? axis.right.icon
-			: isFile(`value_images/${axis.id}_${right ? 1 : 0}.svg`)
-			? `value_images/${axis.id}_${right ? 1 : 0}.svg`
-			: `value_images/${axis.id}_${right ? 1 : 0}.png`
-		: axis.left.icon
-		? axis.left.icon
-		: isFile(`value_images/${axis.id}_${right ? 1 : 0}.svg`)
-		? `value_images/${axis.id}_${right ? 1 : 0}.svg`
-		: `value_images/${axis.id}_${right ? 1 : 0}.png`
-}
-
-export const axes: Axis[] = getJson("axes")
-export const buttons: Button[] = getJson("buttons")
-export const questions: Question[] = getJson("questions")
-export const questionsShort: Question[] | false = isFile(
-	"json/questions_short.json"
-)
-	? getJson("questions_short")
-	: false
-export const general: General = getJson("general")
-export const ideologies: Ideology[] = getJson("ideologies")
-export const canvas: Canvas = getJson("canvas")
-export const customCss = `<style>${getCss("style")}</style>`
+export const axes: Axis[] = mainJson.axes
+export const buttons: Button[] = mainJson.buttons
+export const questions: Question[] = mainJson.questions
+export const general: General = mainJson.general
+export const ideologies: Ideology[] = mainJson.results
 
 var maxVals: {
 	[index: string]: number
@@ -136,13 +87,6 @@ var maxVals: {
 
 for (const axis of axes) {
 	maxVals[axis.id] = 0
-}
-
-// @ts-ignore
-for (const question of questionsShort as Question[]) {
-	for (const axis of axes) {
-		maxVals[axis.id] += Math.abs(question.effect[axis.id])
-	}
 }
 
 export const maxEffectsShort = maxVals

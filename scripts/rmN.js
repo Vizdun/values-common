@@ -1,9 +1,9 @@
 const fs = require("fs")
 
 fs.writeFileSync(
-	"public/index.html",
+	"index.html",
 	fs
-		.readFileSync("public/index.html")
+		.readFileSync("index.html")
 		.toString()
 		.replace(/\\n\s*/g, "\\n")
 )

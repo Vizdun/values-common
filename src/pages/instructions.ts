@@ -1,4 +1,4 @@
-import { general, questions, questionsShort } from "../data"
+import { general, questions } from "../data"
 
 export const instructions = `<h1>${general.title}</h1>
 <hr />
@@ -13,14 +13,6 @@ export const instructions = `<h1>${general.title}</h1>
 <br />
 <button class="button" id="shuffleButton">Shuffled</button>
 <br />
-${
-	questionsShort
-		? `<button class="button" id="shortButton">Short Version</button>
-<br />
-<button class="button" id="shortShuffleButton">Short Shuffled</button>
-<br />`
-		: ""
-}
 <button class="button disagree" id="backButton">
 	Wait, nevermind!
 </button>

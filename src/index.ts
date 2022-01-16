@@ -1,5 +1,5 @@
 import "./css/style.css"
-import { customCss, general, questionsShort } from "./data"
+import { general } from "./data"
 import { indexHtml } from "./pages/index"
 import { instructions } from "./pages/instructions"
 import { quiz } from "./quiz"
@@ -14,10 +14,16 @@ export enum Page {
 
 document.title = general.title
 
+let link = document.createElement('link');
+link.type = 'image/png';
+link.rel = 'shortcut icon';
+link.href = general.favicon;
+document.getElementsByTagName('head')[0].appendChild(link);
+
 export function changePage(dest: number) {
 	switch (dest) {
 		case Page.index:
-			document.body.innerHTML = indexHtml + customCss
+			document.body.innerHTML = indexHtml
 			document
 				.getElementById("instructionButton")
 				.addEventListener("click", () => {
@@ -25,7 +31,7 @@ export function changePage(dest: number) {
 				})
 			break
 		case Page.instructions:
-			document.body.innerHTML = instructions + customCss
+			document.body.innerHTML = instructions
 			document.getElementById("quizButton").addEventListener("click", () => {
 				changePage(Page.quiz)
 			})
@@ -35,16 +41,6 @@ export function changePage(dest: number) {
 			document.getElementById("shuffleButton").addEventListener("click", () => {
 				quiz(true)
 			})
-			if (questionsShort) {
-				document.getElementById("shortButton").addEventListener("click", () => {
-					quiz(false, true)
-				})
-				document
-					.getElementById("shortShuffleButton")
-					.addEventListener("click", () => {
-						quiz(true, true)
-					})
-			}
 			break
 		case Page.quiz:
 			quiz()
